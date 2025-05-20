@@ -15,26 +15,72 @@ Curriculum Learning é uma estratégia de treinamento inspirada na forma como hu
 ## 🔬 Metodologia
 
 1. **Seleção de Ambientes**  
-   Vamos selecionar alguns ambientes clássicos, como:
-    - LunarLander-v2
-    - MiniGridWorld
-    ...
+   Vamos selecionar os seguintes ambientes clássicos:
+    - LunarLander-v3
+    - BipedalWalker-v3
 
 2. **Definição dos Currículos**  
-   Para cada ambiente, vamos estudar quais aspectos vamos quebrar em partes menores (a avaliação faz parte do projeto).
+   A investigação será feita colocando em paralelo o treinamento baseline (sem currículo) e o treinamento com currículo progressivo. Para tanto, vamos seguir o seguinte workflow:
 
-3. **Arquitetura do Agente**  
-   Os agentes utilizam algoritmos clássicos de RL como:
-   - DQN
-   - PPO
-   - A2C  
-   (Dependendo da configuração experimental, via de regra, o PPO é o mais utilizado.)
+   ![Workflow de Treinamento](imgs/workflow.png)
 
-4. **Experimentos Comparativos**  
-   Para cada ambiente:
-   - Treinamento com currículo progressivo
-   - Treinamento direto (sem currículo)
-   - Análise quantitativa das métricas definidas
+### LunarLander-v3
+
+Para o ambiente LunarLander-v3, o currículo será definido da seguinte forma:
+```python
+lunarlander_stages = [
+    {
+        "name": "easy",
+        "gravity": -5.0,
+        "enable_wind": False,
+        "wind_power": 0.0,
+        "turbulence_power": 0.0,
+        "parcial_timesteps": 500_000,
+    },
+    {
+        "name": "intermediate",
+        "gravity": -10.0,
+        "enable_wind": False,
+        "wind_power": 0.0,
+        "turbulence_power": 0.0,
+        "parcial_timesteps": 500_000,
+    },
+    {
+        "name": "hard_with_wind",
+        "gravity": -10.0,
+        "enable_wind": True,
+        "wind_power": 5.0,
+        "turbulence_power": 0.5,
+        "parcial_timesteps": 500_000,
+    },
+    {
+        "name": "full_difficulty",
+        "gravity": -10.0,
+        "enable_wind": True,
+        "wind_power": 15.0,
+        "turbulence_power": 1.5,
+        "parcial_timesteps": 500_000,
+    }
+]
+```
+### BipedalWalker-v3
+
+Para o ambiente BipedalWalker-v3, o currículo será definido da seguinte forma:
+```python
+bipedal_stages = [
+    {
+        "name": "easy",
+        "hardcore": False,
+        "parcial_timesteps": 1_000_000,
+    },
+    {
+        "name": "hardcore",
+        "hardcore": True,
+        "parcial_timesteps": 1_000_000,
+    },
+]
+```
+
 
 ## 📈 Métricas Avaliadas
 
@@ -49,12 +95,20 @@ A hipótese é que o uso de curriculum learning:
 - Permitirá alcançar recompensas mais altas (melhor política final),
 - Promoverá políticas menos aleatórias, com entropia decrescente de forma mais estável.
 
-## ⚙️ Requisitos
+## 🧪 Resultados Obtidos
 
-- Gymnasium ou Gym
-- NumPy, Matplotlib, pandas
-- Stable-Baselines3 (ou outra biblioteca de RL)
-- Tensorboard
+### Tempo de convergência
 
+Não foi afetado pelo uso de curriculum learning, para mais detalhes veja o relatório completo no PDF disponível na pasta `docs`.
 
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/bFrIHgJ3)
+### Recompensa final
+
+O uso de curriculum learning não trouxe resultados significativos, para mais detalhes veja o relatório completo no PDF disponível na pasta `docs`.
+
+### Entropia da política
+
+O uso de curriculum learning para o caso do BipedalWalker-v3 trouxe resultador coerentes com a hipótese inicial. Para mais detalhes veja o relatório completo no PDF disponível na pasta `docs`.
+
+## 📄 Códigos e artefatos
+
+Você pode encontrar os códigos de execução nos notebooks disponíveis na raiz do diretório. Além disso, é possível encontrar os artefatos gerados durante a execução dos experimentos nas pastas `results` e `saved_models`. 
