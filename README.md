@@ -81,7 +81,6 @@ bipedal_stages = [
 ]
 ```
 
-
 ## 📈 Métricas Avaliadas
 
 - **Tempo de convergência**: Número de episódios até estabilização da recompensa média.
@@ -112,3 +111,7 @@ O uso de curriculum learning para o caso do BipedalWalker-v3 trouxe resultador c
 ## 📄 Códigos e artefatos
 
 Você pode encontrar os códigos de execução nos notebooks disponíveis na raiz do diretório. Além disso, é possível encontrar os artefatos gerados durante a execução dos experimentos nas pastas `results` e `saved_models`. 
+
+## 📚 Notebooks de inferência
+
+Por fim, você pode usar o notebook `inference.ipynb` para realizar inferências com os modelos treinados. Basta executar o notebook e seguir as instruções para carregar os modelos e realizar inferências nos ambientes selecionados.
