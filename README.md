@@ -115,3 +115,11 @@ Você pode encontrar os códigos de execução nos notebooks disponíveis na rai
 ## 📚 Notebooks de inferência
 
 Por fim, você pode usar o notebook `inference.ipynb` para realizar inferências com os modelos treinados. Basta executar o notebook e seguir as instruções para carregar os modelos e realizar inferências nos ambientes selecionados.
+
+## Vídeo de Demonstração
+
+Você pode assistir ao vídeo de demonstração do projeto no seguinte link: [Vídeo de Demonstração](https://youtu.be/73VARwhd1N0).
+
+Para ver a inferencia do lunarlander, você pode acessar o seguinte link: [Inferência LunarLander](https://youtu.be/RLzY9Yda1hg).
+
+Para ver a inferencia do bipedalwalker, você pode acessar o seguinte link: [Inferência BipedalWalker Easy](https://youtu.be/-Rf_NF6V0PI) e [Inferência BipedalWalker Hardcore](https://youtu.be/ho9usAyZeBU).
